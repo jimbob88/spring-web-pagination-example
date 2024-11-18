@@ -19,6 +19,19 @@ public class Product {
     @Positive(message="Cannot have a negative price.")
     private Double price;
 
+    protected Product() {
+    }
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
