@@ -30,7 +30,9 @@
         <a th:href="@{/products(page=${productPage.previousPageable().pageNumber}, size=${productPage.size})}">Previous</a>
     </span>
 
-    <span th:text="'Page ${productPage.number + 1} of ${productPage.totalPages}'"></span>
+    <span>
+        Page [[${productPage.number + 1}]] of [[${productPage.totalPages}]]
+    </span>
 
     <span th:if="${productPage.hasNext()}">
         <a th:href="@{/products(page=${productPage.nextPageable().pageNumber}, size=${productPage.size})}">Next</a>
