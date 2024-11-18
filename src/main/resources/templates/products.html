@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paginated Products</title>
+</head>
+<body>
+
+<h2>Product List</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${productPage.content}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<main>
+    <span th:if="${productPage.hasPrevious()}">
+        <a th:href="@{/products(page=${productPage.previousPageable().pageNumber}, size=${productPage.size})}">Previous</a>
+    </span>
+
+    <span th:text="'Page ${productPage.number + 1} of ${productPage.totalPages}'"></span>
+
+    <span th:if="${productPage.hasNext()}">
+        <a th:href="@{/products(page=${productPage.nextPageable().pageNumber}, size=${productPage.size})}">Next</a>
+    </span>
+</main>
+
+</body>
+</html>
